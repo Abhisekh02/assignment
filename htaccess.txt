@@ -1,0 +1,35 @@
+
+# BEGIN 
+# The directives (lines) between "BEGIN " and "END " are
+# dynamically generated, and should only be modified via WordPress filters.
+# Any changes to the directives between these markers will be overwritten.
+
+# BEGIN WordPress
+# The directives (lines) between "BEGIN WordPress" and "END WordPress" are
+# dynamically generated, and should only be modified via WordPress filters.
+# Any changes to the directives between these markers will be overwritten.
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+
+RewriteRule .*www.* /404? [R=301,L] [OR]
+RewriteRule .*Www.* /404? [R=301,L] [OR]
+RewriteRule .*wWw.* /404? [R=301,L] [OR]
+RewriteRule .*wwW.* /404? [R=301,L] [OR]
+RewriteRule .*WWW.* /404? [R=301,L]
+
+RewriteCond %{QUERY_STRING} .*www.* [OR]
+RewriteCond %{QUERY_STRING} .*Www.* [OR]
+RewriteCond %{QUERY_STRING} .*wWw.* [OR]
+RewriteCond %{QUERY_STRING} .*wwW.* [OR]
+RewriteCond %{QUERY_STRING} .*WWW.*
+RewriteRule .* /404? [R=301,L]
+
+# END WordPress
+# END 
